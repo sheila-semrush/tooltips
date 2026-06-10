@@ -1,6 +1,7 @@
 import { Flex } from '@semcore/base-components';
 import Button from '@semcore/button';
-import Tooltip from '@semcore/tooltip';
+import Tooltip, { DescriptionTooltip } from '@semcore/tooltip';
+import Icon from '@semcore/icon/Book/m';
 import './App.css';
 import Link from '@semcore/link';
 
@@ -11,16 +12,16 @@ const Demo = () => (
     <Flex gap={4}>
       <Button>Something</Button>
       <Tooltip>
-        <Tooltip.Trigger>
-          <Button>Plain tooltip here</Button>
-        </Tooltip.Trigger>
+        <Button tag={Tooltip.Trigger} addonLeft={Icon}>
+          Plain tooltip here
+        </Button>
         <Tooltip.Popper>
           Some text
         </Tooltip.Popper>
       </Tooltip>
       <Tooltip>
-        <Tooltip.Trigger>
-          <Button>Tooltip with a link</Button>
+        <Tooltip.Trigger tag={Button}>
+          Tooltip with a link
         </Tooltip.Trigger>
         <Tooltip.Popper>
           Some text with a
@@ -28,7 +29,17 @@ const Demo = () => (
           <Link href='#'>link</Link>
         </Tooltip.Popper>
       </Tooltip>
-      <Button>Something</Button>
+      <DescriptionTooltip>
+        <DescriptionTooltip.Trigger tag={Button}>
+          Read more
+        </DescriptionTooltip.Trigger>
+        <DescriptionTooltip.Popper aria-label='Learn more about some feature'>
+          Some text with a
+          {' '}
+          <Link href='#'>link</Link>
+        </DescriptionTooltip.Popper>
+      </DescriptionTooltip>
+
       <Button>Something</Button>
     </Flex>
   </>
